@@ -304,19 +304,6 @@ html {
         hsl(var(--card) / 0.6));
   }
 
-  .card-3d {
-    perspective: 1000px;
-    transform-style: preserve-3d;
-  }
-
-  .card-3d-inner {
-    transition: transform 0.3s ease-out;
-    transform-style: preserve-3d;
-  }
-
-  .card-3d:hover .card-3d-inner {
-    transform: rotateX(2deg) rotateY(-2deg) translateZ(10px);
-  }
 
   /* ============================================
      GLASSMORPHISM & BORDERS
@@ -382,39 +369,5 @@ html {
 
   .btn-primary-enhanced:hover::before {
     left: 100%;
-  }
-
-  /* ============================================
-     INTERACTIVE EFFECTS
-     Touch optimization and spotlight effects
-     ============================================ */
-  .touch-optimize {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .spotlight-card {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .spotlight-card::before {
-    content: "";
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle,
-        oklch(0.7 0.18 270 / 0.15) 0%,
-        transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-  }
-
-  .spotlight-card:hover::before {
-    opacity: 1;
   }
 }
