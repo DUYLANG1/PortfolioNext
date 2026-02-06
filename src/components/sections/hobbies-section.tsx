@@ -25,7 +25,7 @@ const hobbies = [
 
 export function HobbiesSection() {
   return (
-    <section id="hobbies" className="py-12 md:py-20 lg:py-24 px-4">
+    <section id="hobbies" className="py-12 md:py-20 lg:py-20">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export function HobbiesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`p-5 md:p-6 rounded-2xl border bg-background hover:shadow-lg transition-all duration-500 min-h-[220px] md:h-64 group hover:-rotate-1 hover:bg-primary/5 hover:border-primary/30 ${
+              className={`p-5 md:p-6 rounded-2xl border bg-background hover:shadow-lg transition-all duration-500 min-h-52 md:h-64 group hover:-rotate-1 hover:bg-primary/5 hover:border-primary/30 ${
                 index === 0 ? "lg:mt-0" : index === 1 ? "lg:mt-12" : "lg:mt-24"
               }`}
             >

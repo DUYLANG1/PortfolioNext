@@ -6,7 +6,7 @@ import { User } from "lucide-react";
 
 export function IntroductionSection() {
   return (
-    <section className="py-12 md:py-20 lg:py-24 px-4">
+    <section className="py-12 md:py-20 lg:py-20">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-24 items-center">
         <div className="flex-1 space-y-4 md:space-y-5 text-center md:text-left">
           <SectionHeader

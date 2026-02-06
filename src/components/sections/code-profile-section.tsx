@@ -51,7 +51,7 @@ export function CodeProfileSection() {
   }, [controls]);
 
   return (
-    <section className="hidden md:block py-12 md:py-20 lg:py-24 px-4">
+    <section className="hidden md:block py-12 md:py-20 lg:py-20">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

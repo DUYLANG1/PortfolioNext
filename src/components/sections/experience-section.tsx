@@ -10,7 +10,7 @@ import { SectionHeader } from "../common/section-header";
 
 export function ExperienceSection() {
   return (
-    <section className="py-12 md:py-20 lg:py-24 px-4" id="experience">
+    <section className="py-12 md:py-20 lg:py-20" id="experience">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

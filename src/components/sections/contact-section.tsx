@@ -36,7 +36,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-12 md:py-20 lg:py-24 px-4 bg-linear-to-b from-background via-muted/30 to-background scroll-mt-32"
+      className="py-12 md:py-20 lg:py-20 bg-linear-to-b from-background via-muted/30 to-background scroll-mt-32"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -103,7 +103,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="w-full md:w-[420px] order-1 md:order-2"
+            className="w-full md:w-105 order-1 md:order-2"
           >
             <a
               href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRpccpFVcKfsBmqQGcxNvVwSMsPdLfhHfpzfHpGzvvMxCccrMJBlWMdcvLSWSBrvmRQPrlq"

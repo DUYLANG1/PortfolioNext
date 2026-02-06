@@ -9,10 +9,7 @@ import { SectionHeader } from "@/components/common/section-header";
 
 export function EducationSection() {
   return (
-    <section
-      className="py-12 md:py-20 lg:py-24 px-4 bg-muted/30"
-      id="education"
-    >
+    <section className="py-12 md:py-20 lg:py-20 bg-muted/30" id="education">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

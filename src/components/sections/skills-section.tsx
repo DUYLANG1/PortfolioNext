@@ -22,26 +22,24 @@ const SKILLS: Skill[] = [
   { name: "Expressjs", icon: "expressjs.svg" },
   { name: "Nestjs", icon: "nestjs.svg" },
   { name: "SQL", icon: "mysql.svg" },
-  { name: "NoSQL", icon: "mongoDB.svg" },
+  { name: "NoSQL", icon: "mongodb.svg" },
   { name: "Git", icon: "git.svg" },
   { name: "Docker", icon: "docker.svg" },
-  { name: "Bootstrap", icon: "bootstrap.svg" },
   { name: "Tailwind", icon: "tailwind.svg" },
-  { name: "MaterialUI", icon: "materialui.svg" },
+  { name: "MaterialUI", icon: "mui.svg" },
   { name: "Antd", icon: "antd.svg" },
   { name: "AWS", icon: "aws.svg" },
   { name: "Firebase", icon: "firebase.svg" },
   { name: "Figma", icon: "figma.svg" },
+  { name: "Jira", icon: "jira.svg" },
+  { name: "Directus", icon: "directus.svg" },
 ];
 
 const getSkillIcon = (iconFile: string) => `/assets/skillsSvg/${iconFile}`;
 
 export function SkillsSection() {
   return (
-    <section
-      id="skills"
-      className="py-12 md:py-16 lg:py-20 px-4 bg-muted/30 overflow-hidden"
-    >
+    <section id="skills" className="py-12 md:pb-16 lg:pb-20 bg-muted/30">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -69,7 +67,7 @@ export function SkillsSection() {
           {SKILLS.map((skill, index) => (
             <div
               key={index}
-              className="mx-3 md:mx-4 min-w-[140px] md:min-w-[160px] card-enhanced group border-none bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm"
+              className="mx-3 md:mx-4 min-w-35 md:min-w-40 card-enhanced group border-none bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm"
             >
               <div className="px-6 p-4 md:p-6 flex flex-col items-center gap-3 md:gap-4">
                 <div className="relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center p-2 rounded-xl bg-background/50 group-hover:bg-background/80 transition-colors duration-300">

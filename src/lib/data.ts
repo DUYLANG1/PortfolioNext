@@ -30,19 +30,13 @@ export const experiences: ExperienceItem[] = [
     title: "Frontend Developer",
     company: "DNSE Securities JSC",
     period: "August 2025 - February 2026",
-    current: true,
+    // current: true,
   },
   {
     id: 2,
     title: "Frontend Developer",
     company: "FPT Software",
-    period: "Nov 2024 - June 2025",
-  },
-  {
-    id: 3,
-    title: "SAP ABAP Developer",
-    company: "FPT Software",
-    period: "Dec 2023 - Nov 2024",
+    period: "December 2023 - June 2025",
   },
 ];
 
