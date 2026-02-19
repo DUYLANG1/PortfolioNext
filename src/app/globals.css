@@ -196,12 +196,6 @@ html {
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Remove old static gradient - replaced by animated-bg component */
-
-  html {
-    scroll-behavior: smooth;
-  }
-
   /* Typography polish */
   h1,
   h2,
@@ -288,9 +282,9 @@ html {
      ============================================ */
   .card-enhanced {
     background: linear-gradient(145deg,
-        hsl(var(--card) / 0.6),
-        hsl(var(--card) / 0.4));
-    border: 1px solid hsl(var(--border) / 0.5);
+        oklch(from var(--card) l c h / 0.6),
+        oklch(from var(--card) l c h / 0.4));
+    border: 1px solid oklch(from var(--border) l c h / 0.5);
     backdrop-filter: blur(12px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -298,10 +292,10 @@ html {
   .card-enhanced:hover {
     transform: translateY(-4px);
     box-shadow: var(--glow-primary);
-    border-color: hsl(var(--primary) / 0.5);
+    border-color: oklch(from var(--primary) l c h / 0.5);
     background: linear-gradient(145deg,
-        hsl(var(--card) / 0.8),
-        hsl(var(--card) / 0.6));
+        oklch(from var(--card) l c h / 0.8),
+        oklch(from var(--card) l c h / 0.6));
   }
 
 
@@ -310,9 +304,9 @@ html {
      Frosted glass and animated border effects
      ============================================ */
   .glass {
-    background: hsl(var(--background) / 0.7);
+    background: oklch(from var(--background) l c h / 0.7);
     backdrop-filter: blur(16px);
-    border: 1px solid hsl(var(--border) / 0.4);
+    border: 1px solid oklch(from var(--border) l c h / 0.4);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   }
 
@@ -340,17 +334,17 @@ html {
      ============================================ */
   .btn-primary-enhanced {
     background: var(--gradient-primary);
-    color: hsl(var(--primary-foreground));
+    color: var(--primary-foreground);
     border: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px -3px hsl(var(--primary) / 0.3);
+    box-shadow: 0 4px 15px -3px oklch(from var(--primary) l c h / 0.3);
   }
 
   .btn-primary-enhanced:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px -5px hsl(var(--primary) / 0.5);
+    box-shadow: 0 8px 25px -5px oklch(from var(--primary) l c h / 0.5);
   }
 
   .btn-primary-enhanced::before {
@@ -444,5 +438,20 @@ html {
 
   100% {
     transform: translateX(-50%);
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   Respect user preference for reduced motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

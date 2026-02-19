@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import { Moon, Sun, Loader2 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const SECTIONS = [
   "hero",
@@ -21,6 +20,7 @@ export function Navigation() {
   const [activeSection, setActiveSection] = useState<SectionId>("hero");
   const pathname = usePathname();
   const [isNavigating, setIsNavigating] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
   const [isDark, setIsDark] = useState(false);
 
@@ -37,6 +37,7 @@ export function Navigation() {
 
   useEffect(() => {
     setIsNavigating(false);
+    setIsMobileMenuOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -83,10 +84,11 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavigation = (href: string) => {
+  const handleNavigation = (href: "/" | "/projects") => {
     if (pathname !== href) {
       setIsNavigating(true);
-      router.push(href as any);
+      setIsMobileMenuOpen(false);
+      router.push(href);
       setTimeout(() => setIsNavigating(false), 500);
     }
   };
@@ -193,24 +195,24 @@ export function Navigation() {
             {/* Mobile Menu Button */}
             <button
               className="md:hidden p-2.5 rounded-xl hover:bg-white/10 transition-all duration-300"
-              onClick={() => setIsNavigating(!isNavigating)}
-              aria-label={isNavigating ? "Close menu" : "Open menu"}
-              aria-expanded={isNavigating}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
             >
               <div className="w-6 h-5 relative flex flex-col justify-between">
                 <span
                   className={`w-full h-0.5 bg-foreground rounded-full transition-all duration-300 ${
-                    isNavigating ? "rotate-45 translate-y-2" : ""
+                    isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
                   }`}
                 />
                 <span
                   className={`w-full h-0.5 bg-foreground rounded-full transition-all duration-300 ${
-                    isNavigating ? "opacity-0" : ""
+                    isMobileMenuOpen ? "opacity-0" : ""
                   }`}
                 />
                 <span
                   className={`w-full h-0.5 bg-foreground rounded-full transition-all duration-300 ${
-                    isNavigating ? "-rotate-45 -translate-y-2.5" : ""
+                    isMobileMenuOpen ? "-rotate-45 -translate-y-2.5" : ""
                   }`}
                 />
               </div>
@@ -220,7 +222,7 @@ export function Navigation() {
 
         {/* Mobile Navigation Menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ${isNavigating ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
+          className={`md:hidden overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
         >
           <div className="py-4 space-y-2 bg-background/95 backdrop-blur-xl rounded-2xl border border-white/10 mt-2 p-4 shadow-xl">
             <button

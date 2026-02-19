@@ -12,7 +12,7 @@ const hobbies = [
   },
   {
     icon: Dumbbell,
-    title: "Exercizing",
+    title: "Exercising",
     desc: "Staying active to keep mind sharp and energy high.",
   },
   {

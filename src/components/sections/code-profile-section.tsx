@@ -43,7 +43,10 @@ const codeLines = [
 
 export function CodeProfileSection() {
   return (
-    <section className="hidden md:block py-12 md:py-20 lg:py-20">
+    <section
+      className="hidden md:block py-12 md:py-20 lg:py-20"
+      aria-hidden="true"
+    >
       <div className="max-w-6xl mx-auto">
         <AnimateIn delay={200}>
           <div className="relative max-w-3xl mx-auto rounded-xl border bg-background/60 backdrop-blur-sm shadow-lg p-6 md:p-8 font-mono text-sm overflow-x-auto">

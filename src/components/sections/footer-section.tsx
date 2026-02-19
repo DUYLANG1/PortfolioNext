@@ -21,7 +21,7 @@ export function FooterSection() {
             <p className="text-sm text-muted-foreground/80">
               Built with{" "}
               <span className="gradient-text-secondary">Next.js</span>,{" "}
-              <span className="gradient-text-accent">shadcn/ui</span>, and{" "}
+              <span className="gradient-text-accent">React</span>, and{" "}
               <span className="gradient-text-primary">Tailwind CSS</span>
             </p>
           </div>

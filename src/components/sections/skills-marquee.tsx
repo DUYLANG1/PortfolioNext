@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 
 interface Skill {
   name: string;
@@ -61,13 +61,15 @@ export function SkillsMarquee() {
   return (
     <div
       ref={containerRef}
-      className="mb-12 md:mb-16 overflow-hidden relative marquee-container"
+      className="mb-12 md:mb-16 overflow-hidden relative"
+      role="region"
+      aria-label="Technical skills"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Gradient edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-12 z-10 bg-linear-to-r from-[hsl(var(--muted))] to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-12 z-10 bg-linear-to-l from-[hsl(var(--muted))] to-transparent pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-12 z-10 bg-linear-to-r from-muted/30 to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-12 z-10 bg-linear-to-l from-muted/30 to-transparent pointer-events-none" />
 
       <div
         className="flex w-max"

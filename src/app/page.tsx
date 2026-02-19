@@ -46,7 +46,7 @@ export default function Home() {
     <div className="w-full max-w-280 mx-auto min-h-screen bg-linear-to-br from-background via-background to-muted/20">
       <Navigation />
 
-      <main>
+      <main id="main-content">
         <HeaderSection />
         <CodeProfileSection />
         <IntroductionSection />

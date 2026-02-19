@@ -27,27 +27,27 @@ export function EducationSection() {
         </div>
         <div className="order-2 md:order-2">
           <div className="flex flex-col gap-4 md:gap-6">
-            {education.map((education, index) => (
+            {education.map((item, index) => (
               <GlowCard
-                key={education.id}
+                key={item.id}
                 className="p-5 md:p-6 relative overflow-hidden"
               >
                 <AnimateIn delay={index * 50}>
                   <p className="text-xs md:text-sm gradient-text-primary font-semibold mb-2">
-                    {education.period}
+                    {item.period}
                   </p>
                   <h3 className="text-base md:text-lg font-semibold leading-snug mb-1 group-hover:gradient-text-primary transition-all duration-300">
-                    {education.degree}
+                    {item.degree}
                   </h3>
                   <p className="text-muted-foreground text-sm mb-2">
-                    {education.school}
+                    {item.school}
                   </p>
-                  {education.focus && (
+                  {item.focus && (
                     <p className="text-xs text-muted-foreground/80">
                       <span className="gradient-text-accent font-medium">
                         Focus:
                       </span>{" "}
-                      {education.focus}
+                      {item.focus}
                     </p>
                   )}
                 </AnimateIn>

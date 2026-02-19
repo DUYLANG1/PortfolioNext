@@ -7,7 +7,7 @@ import { Navigation } from "@/components/layout/navigation";
 import { ProjectsHeader } from "@/components/projects/projects-header";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { GitHubIcon } from "@/components/common/social-icons";
 
 export function ProjectsGrid() {
@@ -38,7 +38,7 @@ export function ProjectsGrid() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,transparent_0%,rgba(120,119,198,0.02)_50%,transparent_100%)] pointer-events-none" />
 
       <Navigation />
-      <main className="relative pt-32 pb-24 px-4">
+      <main className="relative pt-32 pb-24 px-4" id="main-content">
         <div className="max-w-6xl mx-auto">
           <ProjectsHeader
             title="Some Projects"
@@ -163,25 +163,60 @@ export function ProjectsGrid() {
       </main>
 
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <div
-            onClick={() => setSelectedProject(null)}
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-base animate-fade-in-active"
-          />
-          <div className="relative z-50 w-full max-w-lg p-6 bg-background border rounded-xl shadow-xl mx-4 animate-base animate-scale-in-active">
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors"
-            >
-              <X className="w-4 h-4" />
-            </button>
-            <h2 className="text-lg font-semibold mb-2">
-              {selectedProject.title}
-            </h2>
-            <p className="text-muted-foreground">{selectedProject.message}</p>
-          </div>
-        </div>
+        <ProjectDialog
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       )}
+    </div>
+  );
+}
+
+function ProjectDialog({
+  project,
+  onClose,
+}: {
+  project: { title: string; message: string };
+  onClose: () => void;
+}) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    closeRef.current?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="project-dialog-title"
+    >
+      <div
+        onClick={onClose}
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-base animate-fade-in-active"
+      />
+      <div className="relative z-50 w-full max-w-lg p-6 bg-background border rounded-xl shadow-xl mx-4 animate-base animate-scale-in-active">
+        <button
+          ref={closeRef}
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors"
+          aria-label="Close dialog"
+        >
+          <X className="w-4 h-4" />
+        </button>
+        <h2 id="project-dialog-title" className="text-lg font-semibold mb-2">
+          {project.title}
+        </h2>
+        <p className="text-muted-foreground">{project.message}</p>
+      </div>
     </div>
   );
 }
