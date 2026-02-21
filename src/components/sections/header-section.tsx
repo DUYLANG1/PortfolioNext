@@ -17,6 +17,11 @@ const TypeAnimation = dynamic(
 );
 
 export function HeaderSection() {
+  const scrollToSection = (sectionId: "experience" | "contact") => {
+    const targetSection = document.getElementById(sectionId);
+    targetSection?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
       className="pt-24 md:pt-32 lg:pt-36 pb-12 md:pb-16 lg:pb-20"
@@ -62,20 +67,22 @@ export function HeaderSection() {
               </span>
             </div>
             <div className="flex flex-wrap gap-3 md:gap-4 pt-2 max-w-2xl mx-auto md:mx-0">
-              <a
-                href="#experience"
+              <button
+                type="button"
+                onClick={() => scrollToSection("experience")}
                 className="flex-1 min-w-35 px-6 py-3 md:px-8 md:py-4 rounded-2xl btn-primary-enhanced font-bold text-base md:text-lg tracking-wide text-center hover:scale-105 transition-transform duration-300 flex items-center justify-center"
               >
                 Experience
-              </a>
-              <a
-                href="#contact"
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollToSection("contact")}
                 className="flex-1 min-w-35 px-6 py-3 md:px-8 md:py-4 rounded-2xl glass font-semibold text-base md:text-lg hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-lg border-animated group text-center flex items-center justify-center"
               >
                 <span className="relative z-10 group-hover:gradient-text-primary">
                   Contact Me
                 </span>
-              </a>
+              </button>
               <a
                 href="https://drive.google.com/file/d/1C2g0wXwLXvuSVG4QlumO9ebSEmn8e6_R/view"
                 target="_blank"
